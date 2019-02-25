@@ -8,10 +8,12 @@ public class Playerdata : MonoBehaviour
     public float cash = 100;
     public int XP;
     public int Level = 1;
-    public int GoodPoints;
-    public int BadPoints;
+    public int GoodPoints = 0;
+    public int BadPoints = 0;
     public int Health = 100;
     public int Ammo = 100;
+    public int XpTolevel = 10;
+    public GameController controller;
 
 	// Use this for initialization
 	void Start ()
@@ -25,16 +27,25 @@ public class Playerdata : MonoBehaviour
 		
 	}
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Gas")
         {
-            Destroy(gameObject);
+            Destroy(collision.gameObject);
+            AddXP(10);
+
+        }
+        else if(collision.gameObject.tag == "Alien")
+        {
+            Destroy(collision.gameObject);
+            GoodPoints++;
+            controller.BloodSplatter(collision.gameObject.transform.position);
+        }
+        else if(collision.gameObject.tag == "Human")
+        {
+            Destroy(collision.gameObject);
+            BadPoints++;
+            controller.BloodSplatter(collision.gameObject.transform.position);
         }
     }
 
@@ -42,5 +53,21 @@ public class Playerdata : MonoBehaviour
     {
         string tag = hitObject.tag;
         //handle collisions
+    }
+
+    public void AddXP(int amount)
+    {
+        XP += amount;
+        CheckifLvLed();
+    }
+
+    void CheckifLvLed()
+    {
+        if(XP >= XpTolevel)
+        {
+            XP = 0;
+            Level++;
+            XpTolevel *= Level;
+        }
     }
 }
