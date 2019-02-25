@@ -39,5 +39,9 @@ public class PlayerMovement : MonoBehaviour
             body.velocity = transform.up * speed * vertical;
             data.fuel -= Mathf.Abs(vertical * 0.11f);
         }
+        else
+        {
+            body.velocity = Vector2.zero;
+        }
     }
 }
