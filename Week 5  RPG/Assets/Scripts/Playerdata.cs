@@ -18,7 +18,7 @@ public class Playerdata : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-		
+
 	}
 	
 	// Update is called once per frame
@@ -29,30 +29,35 @@ public class Playerdata : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Gas")
-        {
-            Destroy(collision.gameObject);
-            AddXP(10);
+        HandleCollsion(collision.gameObject); 
+    }
 
-        }
-        else if(collision.gameObject.tag == "Alien")
-        {
-            Destroy(collision.gameObject);
-            GoodPoints++;
-            controller.SpawnAlienBloodSplatter(collision.gameObject.transform.position);
-        }
-        else if(collision.gameObject.tag == "Human")
-        {
-            Destroy(collision.gameObject);
-            BadPoints++;
-            controller.SpawnBloodSplatter(collision.gameObject.transform.position);
-        }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        HandleCollsion(collision.gameObject);
     }
 
     void HandleCollsion(GameObject hitObject)
     {
         string tag = hitObject.tag;
-        //handle collisions
+        if (tag == "Gas")
+        {
+            Destroy(hitObject);
+            AddXP(10);
+
+        }
+        else if (tag == "Alien")
+        {
+            Destroy(hitObject);
+            GoodPoints++;
+            controller.SpawnAlienBloodSplatter(hitObject.transform.position);
+        }
+        else if (tag == "Human")
+        {
+            Destroy(hitObject);
+            BadPoints++;
+            controller.SpawnBloodSplatter(hitObject.transform.position);
+        }
     }
 
     public void AddXP(int amount)

@@ -6,25 +6,58 @@ public class FollowPath : MonoBehaviour
 {
     public NavigationPath path;
 
-    public bool PickRandomStartNode = false;
 
     public bool canMove = true;
     public float moveSpeed = 2f;
     public float distanceToNodeToTolerence = 0.2f;
 
     Vector2 currentTarget;
-    Rigidbody body;
-    int current
+    Rigidbody2D body;
+    public int currentNodeIndex = 0;
+    
 
 	// Use this for initialization
 	void Start ()
     {
-		
+        body = GetComponent<Rigidbody2D>();
+
+        GetToNextNodePosition();
+        TeleportToNode();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-		
+		if(Vector2.Distance(transform.position,currentTarget) <= distanceToNodeToTolerence)
+        {
+            GetToNextNodePosition();
+        }
 	}
+
+    void GetToNextNodePosition()
+    {
+        if (currentNodeIndex >= path.NodrCount)
+        {
+            currentNodeIndex = 0;
+        }
+
+        currentTarget = path.GetNodePosition(currentNodeIndex);
+        transform.up = currentTarget - body.position;
+
+        currentNodeIndex++;
+    }
+
+    void TeleportToNode()
+    {
+        transform.position = currentTarget;
+    }
+
+    private void FixedUpdate()
+    {
+        if(canMove)
+        {
+            body.MovePosition(Vector2.MoveTowards(transform.position, currentTarget, moveSpeed * Time.deltaTime));
+        }
+        body.angularVelocity = 0;
+    }
 }
