@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     public void SpawnAlienBloodSplatter(Vector2 position)
     {
-        SpawnBloodSplatter(position, Color.magenta);
+        SpawnBloodSplatter(position, Color.black);
     }
 
     public void SpawnExplosion(Vector2 position)

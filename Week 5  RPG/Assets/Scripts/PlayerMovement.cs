@@ -51,15 +51,19 @@ public class PlayerMovement : MonoBehaviour
     void TeleportToNearestGasStation()
     {
         GameObject[] GasStation = GameObject.FindGameObjectsWithTag("Gas Station");
-        int shortestIndex = 10;
+        int shortestIndex = -1;
         float shortestdistance = float.MaxValue;
 
         for(int i = 0; i < GasStation.Length;i++)
         {
-            if(Vector2.Distance(transform.position, GasStation[i].transform.position)
+            float dist =Vector2.Distance(transform.position, GasStation[i].transform.position);
+            if (dist < shortestdistance)
             {
-
+                shortestdistance = dist;
+                shortestIndex = i;
             }
         }
+
+
     }
 }
