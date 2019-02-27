@@ -13,7 +13,7 @@ public class Playerdata : MonoBehaviour
     public int Health = 100;
     public int Ammo = 100;
     public int XpTolevel = 10;
-    public GameController controller;
+    public GameManager controller;
 
 	// Use this for initialization
 	void Start ()
@@ -39,13 +39,13 @@ public class Playerdata : MonoBehaviour
         {
             Destroy(collision.gameObject);
             GoodPoints++;
-            controller.BloodSplatter(collision.gameObject.transform.position);
+            controller.SpawnAlienBloodSplatter(collision.gameObject.transform.position);
         }
         else if(collision.gameObject.tag == "Human")
         {
             Destroy(collision.gameObject);
             BadPoints++;
-            controller.BloodSplatter(collision.gameObject.transform.position);
+            controller.SpawnBloodSplatter(collision.gameObject.transform.position);
         }
     }
 

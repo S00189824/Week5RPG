@@ -39,9 +39,27 @@ public class PlayerMovement : MonoBehaviour
             body.velocity = transform.up * speed * vertical;
             data.fuel -= Mathf.Abs(vertical * 0.11f);
         }
-        else
+        else//no fuel stop car from moving
         {
             body.velocity = Vector2.zero;
+            TeleportToNearestGasStation();
+
+        }
+        body.angularVelocity = 0;
+    }
+
+    void TeleportToNearestGasStation()
+    {
+        GameObject[] GasStation = GameObject.FindGameObjectsWithTag("Gas Station");
+        int shortestIndex = 10;
+        float shortestdistance = float.MaxValue;
+
+        for(int i = 0; i < GasStation.Length;i++)
+        {
+            if(Vector2.Distance(transform.position, GasStation[i].transform.position)
+            {
+
+            }
         }
     }
 }
