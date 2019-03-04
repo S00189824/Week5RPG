@@ -18,5 +18,27 @@ public class NavigationPath : MonoBehaviour
             return Nodes[index].position;
         else
             return Vector2.zero;
+
+
     }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        if(Nodes != null)
+        {
+            for(int i = 0;i < Nodes.Length;i++)
+            {
+                if(i +1 < Nodes.Length)
+                {
+                    Gizmos.DrawLine(Nodes[i].position, Nodes[i + 1].position);
+                }
+                else
+                {
+                    Gizmos.DrawLine(Nodes[i].position, Nodes[0].position);
+                }
+            }
+        }
+    }
+
 }

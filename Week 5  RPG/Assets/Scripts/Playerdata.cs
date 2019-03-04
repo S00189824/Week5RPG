@@ -44,7 +44,7 @@ public class Playerdata : MonoBehaviour
         {
             Destroy(hitObject);
             AddXP(10);
-
+            controller.SpawnExplosion(hitObject.transform.position);
         }
         else if (tag == "Alien")
         {
