@@ -58,6 +58,12 @@ public class Playerdata : MonoBehaviour
             BadPoints++;
             controller.SpawnBloodSplatter(hitObject.transform.position);
         }
+        else if(tag == "AiCar")
+        {
+            Destroy(hitObject);
+            AddXP(10);
+            controller.SpawnExplosion(hitObject.transform.position);
+        }
     }
 
     public void AddXP(int amount)

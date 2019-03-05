@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    float vertical;
-    float horizontal;
+   public float vertical;
+   public  float horizontal;
 
     public float Turnspeed = 2;
     public float speed = 2;
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         //rotate on the Z Axis//
-        transform.Rotate(0, 0, horizontal * Turnspeed);
+        transform.Rotate(0, 0, -(horizontal * Turnspeed));
         //transform.up stores the forward direction of the object
         body.velocity = transform.up * speed * vertical;
 
