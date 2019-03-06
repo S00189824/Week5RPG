@@ -9,47 +9,48 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1022110317313356}
+  m_RootGameObject: {fileID: 1151917893868396}
   m_IsPrefabParent: 1
---- !u!1 &1022110317313356
+--- !u!1 &1151917893868396
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4514634577742752}
-  - component: {fileID: 212919043932768326}
-  - component: {fileID: 50600186025346752}
-  - component: {fileID: 61421928900890358}
-  - component: {fileID: 114201571678397660}
+  - component: {fileID: 4973742218626246}
+  - component: {fileID: 212245002116139090}
+  - component: {fileID: 50024694130295066}
+  - component: {fileID: 61495089649114264}
+  - component: {fileID: 114675665856995684}
+  - component: {fileID: 114964732446428226}
   m_Layer: 0
-  m_Name: car 1
-  m_TagString: Untagged
+  m_Name: EnemyCar
+  m_TagString: EnemyCar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4514634577742752
+--- !u!4 &4973742218626246
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1022110317313356}
+  m_GameObject: {fileID: 1151917893868396}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -15.33, y: 7.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50600186025346752
+--- !u!50 &50024694130295066
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1022110317313356}
+  m_GameObject: {fileID: 1151917893868396}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -63,12 +64,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61421928900890358
+--- !u!61 &61495089649114264
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1022110317313356}
+  m_GameObject: {fileID: 1151917893868396}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -88,23 +89,40 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 1.31}
   m_EdgeRadius: 0
---- !u!114 &114201571678397660
+--- !u!114 &114675665856995684
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1022110317313356}
+  m_GameObject: {fileID: 1151917893868396}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f7510833350d704993c8ff513827b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!212 &212919043932768326
+--- !u!114 &114964732446428226
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1151917893868396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d84d62bc046524542b047f431fd886bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: {fileID: 0}
+  canMove: 1
+  moveSpeed: 2
+  distanceToNodeToTolerence: 0.2
+  PickRandonStartNode: 0
+  currentNodeIndex: 0
+--- !u!212 &212245002116139090
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1022110317313356}
+  m_GameObject: {fileID: 1151917893868396}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -135,7 +153,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: eb140625f97ed324382667efcf911369, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7254902, g: 0, b: 0.7137255, a: 0.7607843}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

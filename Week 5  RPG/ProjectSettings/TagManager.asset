@@ -9,6 +9,7 @@ TagManager:
   - Human
   - Gas
   - AiCar
+  - EnemyCar
   layers:
   - Default
   - TransparentFX

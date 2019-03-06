@@ -6,17 +6,25 @@ public class GameManager : MonoBehaviour
 {
     public GameObject BloodSplatter;
     public GameObject Explosion;
+    public float ElaspedTime = 0;
+    public float SpawnTime = 3;
+    public GameObject Alien;
 
 	// Use this for initialization
 	void Start ()
     {
-		
+
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-		
+        ElaspedTime += Time.deltaTime;
+        if(ElaspedTime > SpawnTime)
+        {
+            Instantiate(Alien);
+            ElaspedTime = 0;
+        }
 	}
 
     public void SpawnBloodSplatter(Vector2 position)

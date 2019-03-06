@@ -10,6 +10,7 @@ public class FollowPath : MonoBehaviour
     public bool canMove = true;
     public float moveSpeed = 2f;
     public float distanceToNodeToTolerence = 0.2f;
+    public bool PickRandonStartNode = false;
 
     Vector2 currentTarget;
     Rigidbody2D body;
@@ -20,7 +21,10 @@ public class FollowPath : MonoBehaviour
 	void Start ()
     {
         body = GetComponent<Rigidbody2D>();
-
+        if(PickRandonStartNode)
+        {
+            currentNodeIndex = Random.Range(0, path.NodrCount - 1);
+        }
         GetToNextNodePosition();
         TeleportToNode();
 	}
